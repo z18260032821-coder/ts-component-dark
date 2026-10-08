@@ -1148,16 +1148,61 @@ html.dark-red .demo-force-focus .el-checkbox .el-checkbox__inner {
   box-shadow: 0 0 0 1px var(--el-color-primary) inset;
 }
 
+/* Forced Select specimens reproduce the Dark Red hover and focus rules from
+   styles/overrides/select.css — Border/Active over Surface/Component, the 2.5px
+   hover glow and 3.5px focus glow, and the decoration rows' right-hand ticks
+   shifted as the design file has them. Keep the two in sync. */
+html.dark-red .demo-force-hover .el-select .el-select__wrapper:not(.is-disabled),
+html.dark-red .demo-force-focus .el-select .el-select__wrapper:not(.is-disabled) {
+  background: var(--bg-color-overlay);
+  box-shadow: inset 0 0 0 2px var(--color-primary-light-3);
+}
+
 html.dark-red .demo-force-hover .el-select .el-select__wrapper:not(.is-disabled) {
   box-shadow:
     inset 0 0 0 2px var(--color-primary-light-3),
-    0 0 10px color-mix(in srgb, var(--color-primary-light-3) 16%, transparent);
+    0 0 2.5px color-mix(in srgb, var(--color-primary-light-3) 16%, transparent);
 }
 
 html.dark-red .demo-force-focus .el-select .el-select__wrapper:not(.is-disabled) {
   box-shadow:
     inset 0 0 0 2px var(--color-primary-light-3),
-    0 0 12px color-mix(in srgb, var(--color-primary-light-3) 22%, transparent);
+    0 0 3.5px color-mix(in srgb, var(--color-primary-light-3) 22%, transparent);
+}
+
+html.dark-red .demo-force-hover .el-select .el-select__wrapper:not(.is-disabled)::before,
+html.dark-red .demo-force-hover .el-select .el-select__wrapper:not(.is-disabled)::after {
+  background-position-x:
+    0,
+    0,
+    22px,
+    29px,
+    calc(100% - 32px),
+    calc(100% - 25px),
+    100%,
+    100%;
+}
+
+html.dark-red .demo-force-focus .el-select .el-select__wrapper:not(.is-disabled)::before,
+html.dark-red .demo-force-focus .el-select .el-select__wrapper:not(.is-disabled)::after {
+  background-position-x:
+    0,
+    0,
+    22px,
+    29px,
+    calc(100% - 39px),
+    calc(100% - 32px),
+    100%,
+    100%;
+  background-size:
+    20px 2px,
+    2px 10px,
+    4px 2px,
+    4px 2px,
+    4px 2px,
+    4px 2px,
+    24px 2px,
+    2px 10px;
 }
 
 @media (max-width: 900px) {

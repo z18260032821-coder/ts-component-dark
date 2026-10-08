@@ -1,8 +1,34 @@
+/*
+ * Select · Dark Red
+ *
+ * Geometry, colour and decoration come from the design file's Select component
+ * (file 6GfWsjRA1mikSzjHcSugwx, node 16:50): a single size, 320 × 40, with 16px
+ * horizontal padding and 16px text, plus the four-corner segmented frame.
+ *
+ * Three conventions to keep in mind when comparing against Figma:
+ *   - The segmented frame is the design's own "Deco Row": a 10px band pinned to
+ *     the top and bottom edges, holding eight segments each. Every end carries
+ *     one 39px group — corner bar 20px, 2px gap, 4px tick, 3px gap, 4px tick —
+ *     and the right group mirrors the left one. That is why the right-hand ticks
+ *     are measured 33px and 26px from the right edge, not 29px and 22px.
+ *   - Hover and Focus keep the left group and only move the right ticks: Hover
+ *     pulls them 1px towards the edge, Focus 7px, and Focus also grows the
+ *     corner bar to 24px.
+ *   - The design's Focus variant draws an editable caret. Element Plus renders
+ *     one only for a filterable Select, so the native behaviour is kept.
+ *
+ * Colour bindings follow the handoff table: Border/Active is
+ * el-color-primary-light-3, Surface/Component is el-bg-color-overlay, the
+ * default frame is el-border-color over an el-fill-color-blank interior, and
+ * every decoration segment is el-color-error-dark-2. Decoration/Opacity is 100
+ * in Custom1, so Disabled keeps the frame at full strength.
+ */
+
 html.dark-red .el-select {
-  --el-select-width: 240px;
+  --el-select-width: 320px;           /* Select/Size/Width */
   --el-select-border-color: var(--el-border-color);
-  --el-select-border-color-hover: var(--el-color-primary-light-3);
-  --el-select-input-focus-border-color: var(--el-color-primary);
+  --el-select-border-color-hover: var(--el-color-primary-light-3);   /* Border/Active */
+  --el-select-input-focus-border-color: var(--el-color-primary-light-3);
   --el-select-disabled-color: var(--el-disabled-text-color);
   position: relative;
   max-width: 100%;
@@ -20,16 +46,16 @@ html.dark-red .el-select .el-select__wrapper.is-disabled .el-tag {
   --el-tag-close-color: var(--el-disabled-text-color);
 }
 
-html.dark-red .el-select::before,
-html.dark-red .el-select::after {
+html.dark-red .el-select .el-select__wrapper::before,
+html.dark-red .el-select .el-select__wrapper::after {
   content: '';
   position: absolute;
-  inset: 0;
-  pointer-events: none;
+  left: 0;
+  right: 0;
+  height: 10px;
   z-index: 2;
-}
-
-html.dark-red .el-select::before {
+  pointer-events: none;
+  background-repeat: no-repeat;
   background-image:
     linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
     linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
@@ -39,16 +65,16 @@ html.dark-red .el-select::before {
     linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
     linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
     linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2));
-  background-position:
-    0 0,
-    0 0,
-    22px 0,
-    29px 0,
-    calc(100% - 29px) 0,
-    calc(100% - 22px) 0,
-    100% 0,
-    100% 0;
-  background-repeat: no-repeat;
+  /* corner bar, corner upright, tick 1, tick 2 — mirrored for the right end */
+  background-position-x:
+    0,
+    0,
+    22px,
+    29px,
+    calc(100% - 33px),
+    calc(100% - 26px),
+    100%,
+    100%;
   background-size:
     20px 2px,
     2px 10px,
@@ -60,26 +86,44 @@ html.dark-red .el-select::before {
     2px 10px;
 }
 
-html.dark-red .el-select::after {
-  background-image:
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
-    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2));
-  background-position:
-    0 100%,
-    0 100%,
-    22px 100%,
-    29px 100%,
-    calc(100% - 29px) 100%,
-    calc(100% - 22px) 100%,
-    100% 100%,
-    100% 100%;
-  background-repeat: no-repeat;
+html.dark-red .el-select .el-select__wrapper::before {
+  top: 0;
+  background-position-y: 0;
+}
+
+/* In the bottom row the corner bars sit on the frame edge while the uprights
+   span the whole band, so every layer takes the same bottom anchor. */
+html.dark-red .el-select .el-select__wrapper::after {
+  bottom: 0;
+  background-position-y: 100%;
+}
+
+/* Hover: the right ticks move 1px towards the edge, the segments keep their size. */
+html.dark-red .el-select .el-select__wrapper:hover:not(.is-disabled)::before,
+html.dark-red .el-select .el-select__wrapper:hover:not(.is-disabled)::after {
+  background-position-x:
+    0,
+    0,
+    22px,
+    29px,
+    calc(100% - 32px),
+    calc(100% - 25px),
+    100%,
+    100%;
+}
+
+/* Focus: the right ticks move 7px in and the corner bar grows to 24px. */
+html.dark-red .el-select .el-select__wrapper.is-focused:not(.is-disabled)::before,
+html.dark-red .el-select .el-select__wrapper.is-focused:not(.is-disabled)::after {
+  background-position-x:
+    0,
+    0,
+    22px,
+    29px,
+    calc(100% - 39px),
+    calc(100% - 32px),
+    100%,
+    100%;
   background-size:
     20px 2px,
     2px 10px,
@@ -87,19 +131,19 @@ html.dark-red .el-select::after {
     4px 2px,
     4px 2px,
     4px 2px,
-    20px 2px,
+    24px 2px,
     2px 10px;
 }
 
 html.dark-red .el-select .el-select__wrapper {
   border-radius: 0;
-  background: var(--bg-color-overlay);
+  background: var(--el-fill-color-blank);
   box-shadow: inset 0 0 0 2px var(--el-select-border-color);
 }
 
 html.dark-red .el-select:not(.el-select--small):not(.el-select--large) .el-select__wrapper {
-  min-height: 40px;
-  padding-right: 16px;
+  min-height: 40px;                   /* Select/Size/Height */
+  padding-right: 16px;                /* Select/Padding/Horizontal */
   padding-left: 16px;
   font-size: var(--el-font-size-medium);
 }
@@ -118,28 +162,25 @@ html.dark-red .el-select.el-select--large .el-select__wrapper {
   font-size: 18px;
 }
 
-html.dark-red .el-select:hover .el-select__wrapper:not(.is-disabled),
+/* Hover and Focus share Border/Active and the Surface/Component interior; only
+   the glow differs (Select/Glow/Hover 16% at 2.5px, Focus 22% at 3.5px). */
+html.dark-red .el-select .el-select__wrapper:hover:not(.is-disabled),
 html.dark-red .el-select .el-select__wrapper.is-focused:not(.is-disabled) {
+  background: var(--bg-color-overlay);
   box-shadow:
     inset 0 0 0 2px var(--el-select-border-color-hover),
-    0 0 10px color-mix(in srgb, var(--el-select-border-color-hover) 16%, transparent);
+    0 0 2.5px color-mix(in srgb, var(--el-select-border-color-hover) 16%, transparent);
 }
 
 html.dark-red .el-select .el-select__wrapper.is-focused:not(.is-disabled) {
   box-shadow:
     inset 0 0 0 2px var(--el-select-input-focus-border-color),
-    0 0 12px color-mix(in srgb, var(--el-select-input-focus-border-color) 22%, transparent);
+    0 0 3.5px color-mix(in srgb, var(--el-select-input-focus-border-color) 22%, transparent);
 }
 
 html.dark-red .el-select .el-select__wrapper.is-disabled {
-  background: var(--fill-color-dark);
+  background: var(--bg-color-overlay);
   box-shadow: inset 0 0 0 2px var(--el-disabled-border-color);
-}
-
-html.dark-red .el-select:has(.el-select__wrapper.is-disabled)::before,
-html.dark-red .el-select:has(.el-select__wrapper.is-disabled)::after {
-  opacity: 0.45;
-  filter: grayscale(1);
 }
 
 html.dark-red .el-select .el-select__selected-item,
