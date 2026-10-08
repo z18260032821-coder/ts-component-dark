@@ -3,6 +3,15 @@
   overflow-x: auto;
 }
 
+/* An `auto` overflow on one axis forces the other axis out of `visible`, so the
+   horizontal demo became a scroll container 8px shorter than its content: the
+   active item's bloom is drawn 8px below the item on purpose, which produced a
+   stray vertical scrollbar and clipped the bloom. Reserve that 8px instead. */
+.menu-demo--horizontal {
+  overflow-y: hidden;
+  padding-bottom: 8px;
+}
+
 .menu-demo--horizontal .el-menu {
   width: max-content;
   min-width: 100%;
