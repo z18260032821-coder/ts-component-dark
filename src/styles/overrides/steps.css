@@ -1,0 +1,164 @@
+.steps-demo {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.steps-demo--horizontal .el-steps {
+  min-width: 680px;
+}
+
+.steps-demo--vertical .el-steps {
+  height: 240px;
+}
+
+html.dark-red .steps-demo .el-step__title {
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.01em;
+  transition: color var(--el-transition-duration-fast), text-shadow var(--el-transition-duration-fast);
+}
+
+html.dark-red .steps-demo .el-step__description {
+  font-size: 16px;
+  line-height: 22px;
+  transition: color var(--el-transition-duration-fast);
+}
+
+html.dark-red .steps-demo .el-step__icon.is-text {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-width: 2px;
+  border-radius: 0;
+  box-sizing: border-box;
+  transition:
+    color var(--el-transition-duration-fast),
+    border-color var(--el-transition-duration-fast),
+    background-color var(--el-transition-duration-fast),
+    box-shadow var(--el-transition-duration-fast);
+}
+
+html.dark-red .steps-demo .el-step__icon.is-text::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle, currentColor 0 1px, transparent 1.5px) left 2px top 2px / 3px 3px no-repeat,
+    radial-gradient(circle, currentColor 0 1px, transparent 1.5px) right 2px top 2px / 3px 3px no-repeat,
+    radial-gradient(circle, currentColor 0 1px, transparent 1.5px) left 2px bottom 2px / 3px 3px no-repeat,
+    radial-gradient(circle, currentColor 0 1px, transparent 1.5px) right 2px bottom 2px / 3px 3px no-repeat;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+html.dark-red .steps-demo .el-step__head.is-success .el-step__icon.is-text::before {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  z-index: 0;
+  background: linear-gradient(135deg, var(--color-danger), var(--color-primary));
+  pointer-events: none;
+}
+
+html.dark-red .steps-demo .el-step__icon-inner {
+  position: relative;
+  z-index: 1;
+  font-size: 16px;
+}
+
+html.dark-red .steps-demo .el-step__head.is-success,
+html.dark-red .steps-demo .el-step__head.is-process {
+  color: var(--color-primary-light-3);
+  border-color: var(--color-primary-light-3);
+}
+
+html.dark-red .steps-demo .el-step__icon.is-text {
+  background-color: var(--bg-color-overlay);
+}
+
+html.dark-red .steps-demo .el-step__head.is-success .el-step__icon.is-text {
+  color: var(--el-color-white);
+  border-color: var(--color-primary-light-3);
+  background: var(--bg-color-overlay);
+}
+
+html.dark-red .steps-demo .el-step__head.is-process .el-step__icon.is-text {
+  color: var(--color-primary-light-3);
+  border-color: var(--color-primary-light-3);
+  background: var(--bg-color-overlay);
+}
+
+html.dark-red .steps-demo .el-step__head.is-wait {
+  color: var(--text-color-secondary);
+}
+
+html.dark-red .steps-demo .el-step__head.is-wait .el-step__icon.is-text {
+  border-color: var(--border-color-light);
+  background: var(--bg-color-overlay);
+  box-shadow: inset 0 0 0 1px var(--border-color-extra-light);
+}
+
+html.dark-red .steps-demo .el-step__title.is-success {
+  color: var(--text-color-regular);
+}
+
+html.dark-red .steps-demo .el-step__title.is-process {
+  color: var(--text-color-primary);
+  font-weight: 700;
+}
+
+html.dark-red .steps-demo .el-step__title.is-wait {
+  color: var(--text-color-secondary);
+}
+
+html.dark-red .steps-demo .el-step__description.is-success,
+html.dark-red .steps-demo .el-step__description.is-process {
+  color: var(--text-color-regular);
+}
+
+html.dark-red .steps-demo .el-step__description.is-wait {
+  color: var(--text-color-placeholder);
+}
+
+html.dark-red .steps-demo .el-step__head.is-error,
+html.dark-red .steps-demo .el-step__title.is-error,
+html.dark-red .steps-demo .el-step__description.is-error {
+  color: var(--color-danger);
+}
+
+html.dark-red .steps-demo .el-step__line {
+  background-color: var(--border-color-extra-light);
+  box-shadow: inset 0 1px 0 var(--border-color-light);
+}
+
+html.dark-red .steps-demo .el-step.is-horizontal .el-step__line {
+  top: 15px;
+  height: 2px;
+}
+
+html.dark-red .steps-demo .el-step.is-vertical .el-step__head {
+  width: 32px;
+}
+
+html.dark-red .steps-demo .el-step.is-vertical .el-step__line {
+  left: 15px;
+  width: 2px;
+}
+
+html.dark-red .steps-demo .el-step.is-vertical .el-step__main {
+  padding-left: 16px;
+}
+
+html.dark-red .steps-demo .el-step.is-horizontal .el-step__head.is-success .el-step__line-inner {
+  height: 2px;
+  border-width: 0 !important;
+  background: linear-gradient(90deg, var(--color-danger), var(--color-primary));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 42%, transparent);
+}
+
+html.dark-red .steps-demo .el-step.is-vertical .el-step__head.is-success .el-step__line-inner {
+  width: 2px;
+  border-width: 0 !important;
+  background: linear-gradient(180deg, var(--color-danger), var(--color-primary));
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 42%, transparent);
+}

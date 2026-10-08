@@ -1,0 +1,105 @@
+/* Company design tokens. Values mirror dark-red-backup.css. */
+html.dark-red {
+  --cyber-navigation-height: 48px;
+
+  /* background */
+  --bg-color: #1e222700;
+  --bg-color-overlay: #2a2626d2;
+  --bg-color-page: #1c2027d2;
+
+  /* border */
+  --border-color: #4f4c4c;
+  --border-color-dark: #5b5858;
+  --border-color-darker: #666363;
+  --border-color-light: #464a50;
+  --border-color-lighter: #373740;
+  --border-color-extra-light: #2b2b2c;
+
+  /* fill */
+  --fill-color: #232b3300;
+  --fill-color-dark: #ffd9d904;
+  --fill-color-darker: #3e3f4200;
+  --fill-color-light: #1f262d00;
+  --fill-color-lighter: #ffd9d904;
+  --fill-color-extra-light: #1a1e2500;
+
+  /* danger */
+  --color-danger: #ff7233;
+  --color-danger-dark-2: #ff8e5c;
+  --color-danger-light-3: #cc5b29;
+  --color-danger-light-5: #a64a21;
+  --color-danger-light-7: #80391a;
+  --color-danger-light-8: #592812;
+  --color-danger-light-9: #33170a;
+
+  /* error */
+  --color-error: #f56c6c;
+  --color-error-dark-2: #f78989;
+  --color-error-light-3: #b25252;
+  --color-error-light-5: #854040;
+  --color-error-light-7: #582e2e;
+  --color-error-light-8: #412626;
+  --color-error-light-9: #2b1d1d;
+
+  /* info */
+  --color-info: #857c7c;
+  --color-info-dark-2: #938b8b;
+  --color-info-light-3: #605353;
+  --color-info-light-5: #575252;
+  --color-info-light-7: #3c3939;
+  --color-info-light-8: #2f2d2d;
+  --color-info-light-9: #212020;
+
+  /* other */
+  --color-other: #409eff;
+  --color-other-dark-2: #66b1ff;
+  --color-other-light-3: #3375b9;
+  --color-other-light-5: #2a598a;
+  --color-other-light-7: #213d5b;
+  --color-other-light-8: #1d3043;
+  --color-other-light-9: #18222c;
+
+  /* success */
+  --color-success: #46b746;
+  --color-success-dark-2: #6bc56b;
+  --color-success-light-3: #389238;
+  --color-success-light-5: #2e772e;
+  --color-success-light-7: #235c23;
+  --color-success-light-8: #184018;
+  --color-success-light-9: #1c2518;
+
+  /* primary */
+  --color-primary: #b93d32;
+  --color-primary-dark-2: #811d1d;
+  --color-primary-light-3: #cd3737;
+  --color-primary-light-5: #b6222271;
+  --color-primary-light-7: #3a2020;
+  --color-primary-light-8: #312222;
+  --color-primary-light-9: #271f1f;
+
+  /* warning */
+  --color-warning: #f3ab0d;
+  --color-warning-dark-2: #f5bc3d;
+  --color-warning-light-3: #c2890a;
+  --color-warning-light-5: #9e6f08;
+  --color-warning-light-7: #7a5607;
+  --color-warning-light-8: #553c05;
+  --color-warning-light-9: #312203;
+
+  /* text */
+  --text-color-primary: #f1eaea;
+  --text-color-secondary: #b4adad;
+  --text-color-regular: #dad3d3;
+  --text-color-placeholder: #989191;
+  --text-color-disabled: #8b8585;
+
+  /* mask */
+  --mask-color: rgba(0, 0, 0, 0.4);
+  --mask-color-extra-light: rgba(0, 0, 0, 0.3);
+
+  /* shadow */
+  --shadow-outside: 0 4px 14px rgba(0, 0, 0, 0.6);
+  --shadow-inside: inset 0 0 0 2px var(--fill-color-lighter);
+  --shadow-inside-primary: inset 0 0 16px 4px var(--color-primary-light-9);
+  --table-fix-column-shadow: rgba(0, 0, 0, 0.75);
+}

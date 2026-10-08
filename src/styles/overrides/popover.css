@@ -1,0 +1,119 @@
+/*
+ * Popover decoration is limited to the company's Dark Red theme.
+ * The light and dark themes keep Element Plus' native popover untouched.
+ */
+html.dark-red .el-popover.el-popper {
+  --el-popover-border-radius: 0;
+  --el-popover-border-color: var(--border-color-light);
+  --el-popover-bg-color: var(--bg-color-page);
+  --el-popover-title-text-color: var(--text-color-primary);
+  --el-popover-padding: 14px 16px;
+  --el-popover-padding-large: 16px 18px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 0;
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 14%, transparent), transparent 74%),
+    color-mix(in srgb, var(--bg-color-page) 72%, transparent);
+  backdrop-filter: blur(10px);
+  color: var(--text-color-regular);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--border-color) 68%, transparent),
+    0 0 18px color-mix(in srgb, var(--color-primary) 16%, transparent),
+    var(--shadow-outside);
+}
+
+html.dark-red .el-popover.el-popper::before,
+html.dark-red .el-popover.el-popper::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 1;
+  pointer-events: none;
+  background-repeat: no-repeat;
+}
+
+/* Corner brackets: 10x2 horizontal + 2x10 vertical strokes, sitting on the border. */
+html.dark-red .el-popover.el-popper::before {
+  background-image:
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary)),
+    linear-gradient(var(--color-primary), var(--color-primary));
+  background-position:
+    left top,
+    left top,
+    right top,
+    right top,
+    left bottom,
+    left bottom,
+    right bottom,
+    right bottom;
+  background-size:
+    10px 2px,
+    2px 10px,
+    10px 2px,
+    2px 10px,
+    10px 2px,
+    2px 10px,
+    10px 2px,
+    2px 10px;
+}
+
+/* 2x2 white pixel on each corner elbow, drawn after the brackets so it sits on top. */
+html.dark-red .el-popover.el-popper::after {
+  background-image:
+    linear-gradient(var(--el-color-white), var(--el-color-white)),
+    linear-gradient(var(--el-color-white), var(--el-color-white)),
+    linear-gradient(var(--el-color-white), var(--el-color-white)),
+    linear-gradient(var(--el-color-white), var(--el-color-white));
+  background-position:
+    left top,
+    right top,
+    left bottom,
+    right bottom;
+  background-size:
+    2px 2px,
+    2px 2px,
+    2px 2px,
+    2px 2px;
+}
+
+html.dark-red .el-popover.el-popper .el-popover__title {
+  color: var(--text-color-primary);
+  font-size: 16px;
+  font-weight: 700;
+  text-shadow:
+    0 0 4px color-mix(in srgb, var(--text-color-primary) 42%, transparent),
+    0 2px 10px color-mix(in srgb, var(--color-primary) 48%, transparent);
+}
+
+/* The arrow keeps Element Plus' transparent edges; only its fill is remapped
+   so it blends into the frosted surface instead of reading as a separate chip. */
+html.dark-red .el-popover.el-popper .el-popper__arrow::before {
+  background: color-mix(in srgb, var(--bg-color-page) 72%, transparent);
+  backdrop-filter: blur(10px);
+}
+
+/* Dark effect keeps the same frame; only the surface deepens. */
+html.dark-red .el-popover.el-popper.is-dark {
+  --el-popover-border-color: var(--color-primary-light-7);
+  --el-popover-bg-color: var(--color-primary-light-9);
+  --el-popover-title-text-color: var(--color-primary-light-3);
+  border-color: var(--color-primary-light-7);
+  color: var(--text-color-regular);
+  background:
+    linear-gradient(90deg, color-mix(in srgb, var(--color-primary) 22%, transparent), transparent 74%),
+    color-mix(in srgb, var(--color-primary-light-9) 72%, transparent);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--color-primary-light-7) 68%, transparent),
+    0 0 18px color-mix(in srgb, var(--color-primary) 24%, transparent),
+    var(--shadow-outside);
+}
+
+html.dark-red .el-popover.el-popper.is-dark .el-popper__arrow::before {
+  background: color-mix(in srgb, var(--color-primary-light-9) 72%, transparent);
+}

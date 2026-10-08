@@ -1,0 +1,134 @@
+html.dark-red .el-tag:not(.el-select .el-tag) {
+  position: relative;
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag) {
+  --el-tag-bg-color: color-mix(in srgb, var(--el-color-primary) 7%, transparent);
+  --el-tag-border-color: var(--el-color-primary-light-7);
+  --el-tag-border-radius: 0;
+  --el-tag-text-color: var(--el-color-primary);
+  height: 28px;
+  padding: 0 16px;
+  box-shadow: 0 0 8px color-mix(in srgb, var(--el-color-primary) 17%, transparent);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--success {
+  --el-tag-bg-color: color-mix(in srgb, var(--el-color-success) 7%, transparent);
+  --el-tag-border-color: var(--el-color-success-light-7);
+  --el-tag-text-color: var(--el-color-success);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--el-color-success) 17%, transparent);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--warning {
+  --el-tag-bg-color: color-mix(in srgb, var(--el-color-warning) 7%, transparent);
+  --el-tag-border-color: var(--el-color-warning-light-7);
+  --el-tag-text-color: var(--el-color-warning);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--el-color-warning) 17%, transparent);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--danger {
+  --el-tag-bg-color: color-mix(in srgb, var(--el-color-error) 7%, transparent);
+  --el-tag-border-color: var(--el-color-error-light-7);
+  --el-tag-text-color: var(--el-color-error);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--el-color-error) 17%, transparent);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--info {
+  --el-tag-bg-color: color-mix(in srgb, var(--el-color-info) 7%, transparent);
+  --el-tag-border-color: var(--el-color-info-light-7);
+  --el-tag-text-color: var(--el-color-info);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--el-color-info) 17%, transparent);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag)::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  color: var(--el-color-primary);
+  background:
+    linear-gradient(currentColor, currentColor) left top / 10px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) left top / 1px 10px no-repeat,
+    linear-gradient(currentColor, currentColor) right bottom / 10px 1px no-repeat,
+    linear-gradient(currentColor, currentColor) right bottom / 1px 10px no-repeat,
+    linear-gradient(var(--el-tag-border-color), var(--el-tag-border-color)) 4px 4px / 5px 5px no-repeat,
+    linear-gradient(var(--el-tag-border-color), var(--el-tag-border-color)) calc(100% - 4px) calc(100% - 4px) / 5px 5px no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--success::before {
+  color: var(--el-color-success);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--warning::before {
+  color: var(--el-color-warning);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--danger::before {
+  color: var(--el-color-error);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--info::before {
+  color: var(--el-color-info);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--small {
+  height: 20px;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--large {
+  height: 32px;
+  padding: 0 18px;
+  font-size: 16px;
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--dark {
+  --el-tag-bg-color: var(--el-color-primary);
+  --el-tag-text-color: var(--el-color-white);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--success.el-tag--dark {
+  --el-tag-bg-color: var(--el-color-success);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--warning.el-tag--dark {
+  --el-tag-bg-color: var(--el-color-warning);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--danger.el-tag--dark {
+  --el-tag-bg-color: var(--el-color-error);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--info.el-tag--dark {
+  --el-tag-bg-color: var(--el-color-info);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--plain {
+  --el-tag-bg-color: transparent;
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).is-hit {
+  --el-tag-border-color: var(--el-color-primary);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--success.is-hit {
+  --el-tag-border-color: var(--el-color-success);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--warning.is-hit {
+  --el-tag-border-color: var(--el-color-warning);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--danger.is-hit {
+  --el-tag-border-color: var(--el-color-error);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).el-tag--info.is-hit {
+  --el-tag-border-color: var(--el-color-info);
+}
+
+html.dark-red .el-tag:not(.el-select .el-tag).is-round {
+  --el-tag-border-radius: var(--el-border-radius-round);
+}

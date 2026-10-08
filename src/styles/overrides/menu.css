@@ -1,0 +1,200 @@
+.menu-demo {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.menu-demo--horizontal .el-menu {
+  width: max-content;
+  min-width: 100%;
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal {
+  --el-menu-horizontal-height: 48px;
+  --el-menu-active-color: var(--el-color-white);
+  height: 48px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--border-color-light);
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item,
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu > .el-sub-menu__title {
+  position: relative;
+  min-width: 81px;
+  height: 48px;
+  padding: 0 18px;
+  border-bottom: 0;
+  color: var(--text-color-secondary);
+  font-size: var(--el-font-size-extra-large);
+  font-weight: 400;
+  line-height: 24px;
+  transition:
+    color var(--el-transition-duration-fast),
+    text-shadow var(--el-transition-duration-fast);
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu > .el-sub-menu__title {
+  padding-right: 40px;
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item:hover,
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu > .el-sub-menu__title:hover {
+  color: var(--text-color-primary);
+  background-color: transparent;
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item.is-active,
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-active > .el-sub-menu__title {
+  color: var(--el-color-white);
+  font-weight: 700;
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item.is-active::after,
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-active > .el-sub-menu__title::after {
+  content: '';
+  position: absolute;
+  right: 18px;
+  bottom: 1px;
+  left: 18px;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--color-danger) 36%,
+    var(--color-primary) 68%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-danger) 52%, transparent));
+  pointer-events: none;
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item.is-active::before,
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-active > .el-sub-menu__title::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 45px;
+  height: 22px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--color-danger) 84%, transparent);
+  filter: blur(7px);
+  pointer-events: none;
+  transform: translateX(-50%);
+}
+
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item:focus-visible,
+html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu > .el-sub-menu__title:focus-visible {
+  border-radius: 0;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--color-danger) 52%, transparent);
+}
+
+html.dark-red .menu-demo--vertical .el-menu,
+html.dark-red .menu-demo--sidebar-groups .el-menu {
+  --el-menu-item-height: 48px;
+  --el-menu-item-font-size: 20px;
+  --el-menu-text-color: var(--el-text-color-regular);
+  width: 240px;
+  max-width: 100%;
+}
+
+html.dark-red .menu-demo--sidebar-groups .el-menu-item-group__title {
+  font-size: 20px;
+}
+
+html.dark-red .menu-demo--vertical .el-menu,
+html.dark-red .menu-demo--sidebar-groups .el-menu {
+  border-right: 1px solid var(--border-color-light);
+  background: var(--bg-color-overlay);
+}
+
+html.dark-red .menu-demo--vertical .el-menu-item,
+html.dark-red .menu-demo--vertical .el-sub-menu__title,
+html.dark-red .menu-demo--sidebar-groups .el-menu-item,
+html.dark-red .menu-demo--sidebar-groups .el-sub-menu__title {
+  position: relative;
+  color: var(--text-color-regular);
+  transition: color var(--el-transition-duration-fast), background-color var(--el-transition-duration-fast);
+}
+
+html.dark-red .menu-demo--vertical .el-menu-item:hover,
+html.dark-red .menu-demo--vertical .el-sub-menu__title:hover,
+html.dark-red .menu-demo--sidebar-groups .el-menu-item:hover,
+html.dark-red .menu-demo--sidebar-groups .el-sub-menu__title:hover {
+  background: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+  color: var(--text-color-primary);
+}
+
+html.dark-red .menu-demo--vertical .el-menu-item.is-active,
+html.dark-red .menu-demo--sidebar-groups .el-menu-item.is-active {
+  /* Same treatment as the dialog sidebar: design-file background, white text,
+     red glow. */
+  border-left: 0;
+  background: url('/assets/dialog/menu-active.svg') center / 100% 100% no-repeat;
+  color: var(--el-color-white);
+  font-weight: 700;
+  text-shadow:
+    0 0 4px color-mix(in srgb, var(--color-danger) 65%, transparent),
+    0 0 10px color-mix(in srgb, var(--color-danger) 45%, transparent);
+}
+
+html.dark-red .menu-demo--vertical .el-sub-menu.is-opened > .el-sub-menu__title,
+html.dark-red .menu-demo--sidebar-groups .el-sub-menu.is-opened > .el-sub-menu__title {
+  color: var(--text-color-primary);
+}
+
+html.dark-red .menu-demo--sidebar-groups .el-menu-item-group__title {
+  color: var(--text-color-secondary);
+}
+
+html.dark-red .menu-demo--vertical .el-menu-item:focus-visible,
+html.dark-red .menu-demo--vertical .el-sub-menu__title:focus-visible,
+html.dark-red .menu-demo--sidebar-groups .el-menu-item:focus-visible,
+html.dark-red .menu-demo--sidebar-groups .el-sub-menu__title:focus-visible {
+  outline: 1px solid var(--color-primary-light-3);
+  outline-offset: -1px;
+}
+
+html.dark-red .el-menu--popup {
+  border: 1px solid var(--border-color-light);
+  border-radius: 0;
+  background: var(--bg-color-overlay);
+  box-shadow: var(--shadow-outside);
+}
+
+html.dark-red .el-menu--popup .el-menu-item,
+html.dark-red .el-menu--popup .el-sub-menu__title {
+  color: var(--text-color-regular);
+}
+
+html.dark-red .el-menu--popup .el-menu-item:hover,
+html.dark-red .el-menu--popup .el-sub-menu__title:hover {
+  background: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+  color: var(--text-color-primary);
+}
+
+html.dark-red .el-menu--popup .el-menu-item.is-active {
+  color: var(--color-primary-light-3);
+}
+
+html.dark-red .el-menu:not(.el-menu--horizontal):not(.el-menu--popup) {
+  --el-menu-active-color: var(--color-primary-light-3);
+  --el-menu-hover-bg-color: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+  border-right-color: var(--border-color-light);
+  background: var(--bg-color-overlay);
+}
+
+html.dark-red .el-menu:not(.el-menu--horizontal):not(.el-menu--popup) .el-menu-item,
+html.dark-red .el-menu:not(.el-menu--horizontal):not(.el-menu--popup) .el-sub-menu__title {
+  position: relative;
+  color: var(--text-color-regular);
+}
+
+html.dark-red .el-menu:not(.el-menu--horizontal):not(.el-menu--popup) .el-menu-item.is-active {
+  border-left: 0;
+  background: url('/assets/dialog/menu-active.svg') center / 100% 100% no-repeat;
+  color: var(--el-color-white);
+  font-weight: 700;
+  text-shadow:
+    0 0 4px color-mix(in srgb, var(--color-danger) 65%, transparent),
+    0 0 10px color-mix(in srgb, var(--color-danger) 45%, transparent);
+}

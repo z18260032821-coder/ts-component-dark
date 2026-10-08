@@ -1,0 +1,95 @@
+html.dark-red .el-checkbox {
+  --el-checkbox-input-border: 1px solid var(--el-border-color-light);
+  --el-checkbox-input-border-color-hover: var(--el-color-primary);
+}
+
+html.dark-red .el-checkbox {
+  --el-checkbox-input-width: 20px;
+  --el-checkbox-input-height: 20px;
+  --el-checkbox-border-radius: 0;
+  --el-checkbox-bg-color: transparent;
+  --el-checkbox-input-border: 2px solid var(--border-color-light);
+  --el-checkbox-input-border-color-hover: var(--color-primary-light-3);
+  --el-checkbox-checked-bg-color: transparent;
+  --el-checkbox-checked-input-border-color: var(--color-primary-light-3);
+  --el-checkbox-disabled-input-fill: var(--el-fill-color-dark);
+  --el-checkbox-disabled-border-color: var(--el-disabled-border-color);
+  --el-checkbox-disabled-checked-input-fill: var(--el-fill-color-dark);
+  --el-checkbox-disabled-checked-input-border-color: var(--el-disabled-border-color);
+  height: 52px;
+  padding-block: 14px;
+  box-sizing: border-box;
+}
+
+html.dark-red .el-checkbox .el-checkbox__inner {
+  border: 2px solid var(--border-color-light);
+}
+
+html.dark-red .el-checkbox .el-checkbox__input.is-disabled .el-checkbox__inner {
+  border-color: var(--el-disabled-border-color);
+}
+
+html.dark-red .el-checkbox .el-checkbox__input {
+  position: relative;
+}
+
+html.dark-red .el-checkbox .el-checkbox__input::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  width: 20px;
+  height: 20px;
+  background:
+    linear-gradient(var(--el-color-white), var(--el-color-white)) left top / 2px 2px no-repeat,
+    linear-gradient(var(--el-color-white), var(--el-color-white)) right top / 2px 2px no-repeat,
+    linear-gradient(var(--el-color-white), var(--el-color-white)) left bottom / 2px 2px no-repeat,
+    linear-gradient(var(--el-color-white), var(--el-color-white)) right bottom / 2px 2px no-repeat;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Dense groups keep native spacing and avoid repeated corner pixels between labels. */
+html.dark-red .el-checkbox-group .el-checkbox .el-checkbox__input::before {
+  opacity: 0;
+}
+
+html.dark-red .el-checkbox:hover .el-checkbox__inner,
+html.dark-red .el-checkbox:has(.el-checkbox__original:focus-visible) .el-checkbox__inner,
+html.dark-red .el-checkbox .el-checkbox__input.is-checked:not(.is-disabled) .el-checkbox__inner,
+html.dark-red .el-checkbox .el-checkbox__input.is-indeterminate:not(.is-disabled) .el-checkbox__inner {
+  border-color: var(--color-primary-light-3);
+}
+
+html.dark-red .el-checkbox .el-checkbox__input.is-checked .el-checkbox__inner::after {
+  display: block;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  border: 0;
+  background: linear-gradient(135deg, var(--color-danger) 0%, var(--color-primary) 100%);
+  box-sizing: border-box;
+  transform: none;
+}
+
+html.dark-red .el-checkbox .el-checkbox__input.is-indeterminate .el-checkbox__inner::before {
+  left: 2px;
+  top: 7px;
+  width: 12px;
+  height: 2px;
+  background: var(--color-primary);
+  transform: none;
+}
+
+html.dark-red .el-checkbox .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner::after,
+html.dark-red .el-checkbox .el-checkbox__input.is-disabled.is-indeterminate .el-checkbox__inner::before {
+  background: var(--el-color-info-dark-2);
+}
+
+html.dark-red .el-checkbox .el-checkbox__label {
+  color: var(--el-text-color-primary);
+  padding-left: 8px;
+  font-size: var(--el-font-size-extra-large, 20px);
+  font-weight: 400;
+  line-height: normal;
+}

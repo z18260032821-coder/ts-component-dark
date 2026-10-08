@@ -1,0 +1,83 @@
+.pagination-demo {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.pagination-demo .el-pagination {
+  width: max-content;
+}
+
+html.dark-red .el-pagination__editor {
+  position: relative;
+  height: 32px;
+}
+
+html.dark-red .el-pagination__editor::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) left top / 12px 1px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) left top / 1px 8px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) right top / 12px 1px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) right top / 1px 8px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) left bottom / 12px 1px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) left bottom / 1px 8px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) right bottom / 12px 1px no-repeat,
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)) right bottom / 1px 8px no-repeat;
+}
+
+html.dark-red .el-pagination__editor .el-input__wrapper {
+  min-height: 32px;
+  padding: 2px 12px;
+  border-radius: 0;
+  background: var(--bg-color-overlay);
+  box-shadow: inset 0 0 0 2px transparent;
+}
+
+html.dark-red .pagination-demo .el-pagination__editor:hover .el-input__wrapper:not(.is-disabled),
+html.dark-red .el-pagination__editor .el-input__wrapper.is-focus:not(.is-disabled) {
+  box-shadow:
+    inset 0 0 0 2px var(--color-primary-light-3),
+    0 0 10px color-mix(in srgb, var(--color-primary-light-3) 16%, transparent);
+}
+
+html.dark-red .el-pagination__editor .el-input__wrapper.is-disabled {
+  background: var(--fill-color-dark);
+  box-shadow: inset 0 0 0 2px var(--el-disabled-border-color);
+}
+
+html.dark-red .el-pagination {
+  color: var(--text-color-secondary);
+}
+
+html.dark-red .el-pager li,
+html.dark-red .el-pagination .btn-prev,
+html.dark-red .el-pagination .btn-next {
+  border: 1px solid transparent;
+  border-radius: 0;
+  background: var(--bg-color-overlay);
+  color: var(--text-color-regular);
+}
+
+html.dark-red .el-pager li:hover,
+html.dark-red .el-pagination .btn-prev:hover:not(:disabled),
+html.dark-red .el-pagination .btn-next:hover:not(:disabled) {
+  border-color: var(--color-primary-light-7);
+  color: var(--color-primary-light-3);
+}
+
+html.dark-red .el-pager li.is-active {
+  border-color: var(--color-primary-light-3);
+  background: color-mix(in srgb, var(--color-primary-light-7) 76%, transparent);
+  color: var(--color-primary-light-3);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-primary) 18%, transparent);
+}
+
+html.dark-red .el-pagination .btn-prev:disabled,
+html.dark-red .el-pagination .btn-next:disabled,
+html.dark-red .el-pager li.is-disabled {
+  color: var(--text-color-disabled);
+}

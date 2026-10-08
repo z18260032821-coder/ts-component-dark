@@ -1,0 +1,184 @@
+html.dark-red .el-select {
+  --el-select-width: 240px;
+  --el-select-border-color: var(--el-border-color);
+  --el-select-border-color-hover: var(--el-color-primary-light-3);
+  --el-select-input-focus-border-color: var(--el-color-primary);
+  --el-select-disabled-color: var(--el-disabled-text-color);
+  position: relative;
+  max-width: 100%;
+}
+
+html.dark-red .el-select .el-select__wrapper.is-disabled {
+  --el-input-text-color: var(--el-disabled-text-color);
+  --el-input-icon-color: var(--el-disabled-text-color);
+  --el-select-input-color: var(--el-disabled-text-color);
+  --el-select-multiple-input-color: var(--el-disabled-text-color);
+}
+
+html.dark-red .el-select .el-select__wrapper.is-disabled .el-tag {
+  --el-tag-text-color: var(--el-disabled-text-color);
+  --el-tag-close-color: var(--el-disabled-text-color);
+}
+
+html.dark-red .el-select::before,
+html.dark-red .el-select::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+html.dark-red .el-select::before {
+  background-image:
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2));
+  background-position:
+    0 0,
+    0 0,
+    22px 0,
+    29px 0,
+    calc(100% - 29px) 0,
+    calc(100% - 22px) 0,
+    100% 0,
+    100% 0;
+  background-repeat: no-repeat;
+  background-size:
+    20px 2px,
+    2px 10px,
+    4px 2px,
+    4px 2px,
+    4px 2px,
+    4px 2px,
+    20px 2px,
+    2px 10px;
+}
+
+html.dark-red .el-select::after {
+  background-image:
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2)),
+    linear-gradient(var(--el-color-error-dark-2), var(--el-color-error-dark-2));
+  background-position:
+    0 100%,
+    0 100%,
+    22px 100%,
+    29px 100%,
+    calc(100% - 29px) 100%,
+    calc(100% - 22px) 100%,
+    100% 100%,
+    100% 100%;
+  background-repeat: no-repeat;
+  background-size:
+    20px 2px,
+    2px 10px,
+    4px 2px,
+    4px 2px,
+    4px 2px,
+    4px 2px,
+    20px 2px,
+    2px 10px;
+}
+
+html.dark-red .el-select .el-select__wrapper {
+  border-radius: 0;
+  background: var(--bg-color-overlay);
+  box-shadow: inset 0 0 0 2px var(--el-select-border-color);
+}
+
+html.dark-red .el-select:not(.el-select--small):not(.el-select--large) .el-select__wrapper {
+  min-height: 40px;
+  padding-right: 16px;
+  padding-left: 16px;
+  font-size: var(--el-font-size-medium);
+}
+
+html.dark-red .el-select.el-select--small .el-select__wrapper {
+  min-height: 32px;
+  padding-right: 12px;
+  padding-left: 12px;
+  font-size: var(--el-font-size-base);
+}
+
+html.dark-red .el-select.el-select--large .el-select__wrapper {
+  min-height: 48px;
+  padding-right: 18px;
+  padding-left: 18px;
+  font-size: 18px;
+}
+
+html.dark-red .el-select:hover .el-select__wrapper:not(.is-disabled),
+html.dark-red .el-select .el-select__wrapper.is-focused:not(.is-disabled) {
+  box-shadow:
+    inset 0 0 0 2px var(--el-select-border-color-hover),
+    0 0 10px color-mix(in srgb, var(--el-select-border-color-hover) 16%, transparent);
+}
+
+html.dark-red .el-select .el-select__wrapper.is-focused:not(.is-disabled) {
+  box-shadow:
+    inset 0 0 0 2px var(--el-select-input-focus-border-color),
+    0 0 12px color-mix(in srgb, var(--el-select-input-focus-border-color) 22%, transparent);
+}
+
+html.dark-red .el-select .el-select__wrapper.is-disabled {
+  background: var(--fill-color-dark);
+  box-shadow: inset 0 0 0 2px var(--el-disabled-border-color);
+}
+
+html.dark-red .el-select:has(.el-select__wrapper.is-disabled)::before,
+html.dark-red .el-select:has(.el-select__wrapper.is-disabled)::after {
+  opacity: 0.45;
+  filter: grayscale(1);
+}
+
+html.dark-red .el-select .el-select__selected-item,
+html.dark-red .el-select .el-select__placeholder {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Teleported Select and TreeSelect panels remain inside the themed html root. */
+html.dark-red .el-select__popper.el-popper,
+html.dark-red .el-tree-select__popper.el-popper,
+html.dark-red .el-time-select__popper.el-popper {
+  border: 1px solid var(--border-color-light);
+  border-radius: 0;
+  background: var(--bg-color-overlay);
+  box-shadow: var(--shadow-outside);
+}
+
+html.dark-red .el-select__popper.el-popper .el-popper__arrow::before,
+html.dark-red .el-tree-select__popper.el-popper .el-popper__arrow::before,
+html.dark-red .el-time-select__popper.el-popper .el-popper__arrow::before {
+  border-color: var(--border-color-light);
+  background: var(--bg-color-overlay);
+}
+
+html.dark-red .el-select-dropdown__item.is-hovering,
+html.dark-red .el-time-select__item:hover,
+html.dark-red .el-time-select__item.selected:not(.disabled) {
+  background: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+}
+
+html.dark-red .el-select-dropdown__item.is-selected,
+html.dark-red .el-time-select__item.selected:not(.disabled) {
+  color: var(--color-primary-light-3);
+}
+
+html.dark-red .el-select-dropdown__item.is-disabled,
+html.dark-red .el-time-select__item.disabled {
+  color: var(--text-color-disabled);
+}

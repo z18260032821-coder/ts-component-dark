@@ -1,0 +1,210 @@
+/*
+ * Detail panel decoration is limited to the company's Dark Red theme.
+ * Measures come from the reference photo at a 4.14 photo-px : CSS-px ratio
+ * (body copy measures 82.8 photo px per glyph against a 20px spec).
+ */
+html.dark-red .detail-panel {
+  position: relative;
+  width: min(472px, 100%);
+  padding: 20px 24px 24px;
+  border: 1px solid var(--border-color-light);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--bg-color-page) 72%, transparent);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--border-color) 72%, transparent),
+    inset 0 0 24px color-mix(in srgb, var(--color-primary-light-7) 16%, transparent),
+    0 0 18px color-mix(in srgb, var(--color-primary) 14%, transparent),
+    var(--shadow-outside);
+}
+
+/* Panel caption sits above the frame, outside it. */
+html.dark-red .detail-panel__caption {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  color: var(--text-color-secondary);
+  font-size: 12px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+html.dark-red .detail-panel::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  /* Top rule runs between the two top cut-outs (12px in from each side).
+     Below it, the design-file cut-outs, 1:1 with their viewBoxes: the top
+     corners are 12x12 with a 4x4 white pixel, the bottom ones 10x10 with a 2x2. */
+  background-image:
+    linear-gradient(var(--color-danger-light-5), var(--color-danger-light-5)),
+    url('/assets/detail/corner-tl.svg'),
+    url('/assets/detail/corner-tr.svg'),
+    url('/assets/detail/corner-bl.svg'),
+    url('/assets/detail/corner-br.svg');
+  background-position:
+    left 12px top 1px,
+    left top,
+    right top,
+    left bottom,
+    right bottom;
+  background-size:
+    calc(100% - 24px) 2px,
+    12px 12px,
+    12px 12px,
+    10px 10px,
+    10px 10px;
+}
+
+html.dark-red .detail-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 18px;
+}
+
+html.dark-red .detail-panel__title {
+  color: var(--text-color-primary);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-shadow:
+    0 0 4px color-mix(in srgb, var(--text-color-primary) 42%, transparent),
+    0 3px 12px color-mix(in srgb, var(--color-primary-light-3) 74%, transparent);
+}
+
+html.dark-red .detail-panel__close {
+  flex: 0 0 auto;
+  color: var(--text-color-secondary);
+  font-size: 28px;
+  cursor: pointer;
+  filter: drop-shadow(0 0 5px color-mix(in srgb, var(--color-primary-light-3) 36%, transparent));
+}
+
+html.dark-red .detail-panel__close:hover {
+  color: var(--color-primary-light-3);
+}
+
+html.dark-red .detail-panel__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+/* Tag glyphs read at 20px inside this panel. The extra `.detail-panel` layer is
+   required to match the specificity of the catalogue tag rule in tag.css. */
+html.dark-red .detail-panel .detail-panel__tags .el-tag {
+  height: 34px;
+  padding: 0 18px;
+  font-size: 20px;
+}
+
+html.dark-red .detail-panel__text,
+html.dark-red .detail-panel__paragraph {
+  margin: 0 0 14px;
+  color: var(--text-color-regular);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* "标题：" prefix plus a wrapping column of options; wrapping is confined to
+   the inner list so a wrapped option lines up with the first one. */
+html.dark-red .detail-panel__options {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin: 4px 0 24px;
+  color: var(--text-color-primary);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* Wrapping happens inside this column, so a wrapped option restarts at the
+   first option's left edge instead of running back under the "标题：" prefix. */
+html.dark-red .detail-panel__options-list {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  gap: 0 16px;
+}
+
+/* The row runs at 28px. The box itself keeps the catalogue 20px size, frame
+   and corner pixels untouched. */
+html.dark-red .detail-panel__options .el-checkbox {
+  height: 28px;
+  padding-block: 0;
+}
+
+html.dark-red .detail-panel .detail-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* EP gives adjacent .el-button siblings a 12px margin-left that stacks on top of
+   gap rather than replacing it. Zero that out — but exempt the trailing Primary,
+   whose own margin-left: auto is what pushes it to the right edge. */
+html.dark-red .detail-panel .detail-panel__actions
+  .el-button + .el-button:not(.detail-panel__action--primary) {
+  margin-left: 0;
+}
+
+html.dark-red .detail-panel .detail-panel__action {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--border-color-light);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--fill-color) 24%, transparent);
+  color: var(--text-color-primary);
+  font-size: 22px;
+}
+
+html.dark-red .detail-panel .detail-panel__action::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--text-color-secondary), var(--text-color-secondary)) left top / 8px 1px no-repeat,
+    linear-gradient(var(--text-color-secondary), var(--text-color-secondary)) left top / 1px 8px no-repeat,
+    linear-gradient(var(--text-color-secondary), var(--text-color-secondary)) right bottom / 8px 1px no-repeat,
+    linear-gradient(var(--text-color-secondary), var(--text-color-secondary)) right bottom / 1px 8px no-repeat;
+}
+
+/* button.css styles `.el-button:not([class*='el-button--'])` and stacks three
+   :not() layers on its hover rule, so these need matching depth to win. */
+html.dark-red .detail-panel .detail-panel__action:hover:not(.is-disabled):not(:disabled) {
+  border-color: var(--color-primary-light-5);
+  background: color-mix(in srgb, var(--fill-color) 24%, transparent);
+  color: var(--color-primary-light-3);
+}
+
+html.dark-red .detail-panel .detail-panel__action.is-active {
+  border-color: var(--color-primary-light-5);
+  background: color-mix(in srgb, var(--color-primary) 22%, transparent);
+  color: var(--text-color-primary);
+}
+
+html.dark-red .detail-panel .detail-panel__action.is-active:hover:not(.is-disabled):not(:disabled) {
+  border-color: var(--color-primary-light-5);
+  background: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  color: var(--text-color-primary);
+}
+
+/* The trailing action is the labelled primary control. */
+/* Reuses the catalogue primary button wholesale; only the panel's scale is
+   adapted so it lines up with the 40px icon buttons. */
+html.dark-red .detail-panel .detail-panel__action--primary {
+  height: 40px;
+  margin-left: auto;
+  min-width: 82px;
+  padding: 0 20px;
+  font-size: 20px;
+}

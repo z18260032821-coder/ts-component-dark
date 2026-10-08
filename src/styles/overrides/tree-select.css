@@ -1,0 +1,3 @@
+html.dark-red .el-select-dropdown.is-multiple.el-tree-select__popper .el-tree {
+  --el-tree-node-content-height: 32px;
+}

@@ -1,0 +1,58 @@
+.tree-demo {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+html.dark-red .el-tree {
+  --el-tree-node-content-height: 32px;
+  min-width: 320px;
+}
+
+html.dark-red .el-tree .el-checkbox {
+  height: 20px;
+  padding-block: 0;
+}
+
+html.dark-red .el-tree-node__label {
+  font-size: 20px;
+  color: var(--el-text-color-regular);
+}
+
+html.dark-red .el-tree {
+  --el-tree-node-hover-bg-color: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+  color: var(--text-color-regular);
+  background: transparent;
+}
+
+html.dark-red .el-tree-node__content {
+  position: relative;
+  border-left: 2px solid transparent;
+  transition: background-color var(--el-transition-duration-fast), border-color var(--el-transition-duration-fast);
+}
+
+html.dark-red .el-tree-node__content:hover,
+html.dark-red .el-tree-node.is-current > .el-tree-node__content {
+  border-left-color: var(--color-primary-light-3);
+  background: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+}
+
+html.dark-red .el-tree-node:focus > .el-tree-node__content {
+  outline: 1px solid var(--color-primary-light-3);
+  outline-offset: -1px;
+}
+
+html.dark-red .el-tree-select__popper .el-tree {
+  --el-tree-node-hover-bg-color: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+  color: var(--text-color-regular);
+  background: transparent;
+}
+
+html.dark-red .el-tree-select__popper .el-tree-node__content:hover,
+html.dark-red .el-tree-select__popper .el-tree-node.is-current > .el-tree-node__content {
+  background: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+}
+
+html.dark-red .el-tree-select__popper .el-tree-node.is-current > .el-tree-node__content .el-tree-node__label {
+  color: var(--color-primary-light-3);
+}
+

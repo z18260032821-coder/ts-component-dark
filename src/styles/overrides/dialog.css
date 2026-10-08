@@ -1,0 +1,212 @@
+html.dark-red .business-config-dialog {
+  --business-dialog-header-height: 48px;
+  --business-dialog-footer-height: 56px;
+  --business-dialog-sidebar-width: 220px;
+  max-height: calc(100vh - 96px);
+  margin: 48px auto;
+  padding: 0;
+  overflow: hidden;
+}
+
+html.dark-red .business-config-dialog .el-dialog__header {
+  height: var(--business-dialog-header-height);
+  margin: 0;
+  padding: 0 24px 0 36px;
+  border-bottom: 1px solid var(--el-border-color-light);
+}
+
+.business-config-dialog__title {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  color: var(--el-text-color-primary);
+  font-size: var(--el-font-size-extra-large);
+  font-weight: 700;
+}
+
+html.dark-red .business-config-dialog .el-dialog__headerbtn {
+  top: 0;
+  right: 12px;
+  width: 48px;
+  height: var(--business-dialog-header-height);
+  z-index: 5;
+}
+
+html.dark-red .business-config-dialog .el-dialog__body {
+  padding: 0;
+}
+
+.business-config-dialog__layout {
+  display: grid;
+  grid-template-columns: var(--business-dialog-sidebar-width, 220px) minmax(0, 1fr);
+  min-height: clamp(460px, 48vw, 680px);
+}
+
+.business-config-dialog__sidebar {
+  min-width: 0;
+  border-right: 1px solid var(--el-border-color-light);
+}
+
+.business-config-dialog__sidebar .el-menu {
+  width: 100%;
+  height: 100%;
+  border-right: 0;
+}
+
+.business-config-dialog__content {
+  min-width: 0;
+  padding: 0 24px;
+}
+
+.business-config-dialog__content .el-tabs__header {
+  margin-bottom: 0;
+}
+
+.business-config-dialog__content .el-tabs {
+  width: 100%;
+}
+
+.business-config-dialog__empty {
+  min-height: calc(clamp(460px, 48vw, 680px) - 48px);
+}
+
+html.dark-red .business-config-dialog .el-dialog__footer {
+  height: var(--business-dialog-footer-height);
+  padding: 0 24px;
+  border-top: 1px solid var(--el-border-color-light);
+}
+
+/* Footer buttons run at 44px / 16px and drop Element Plus' default 500 weight. */
+html.dark-red .business-config-dialog .el-dialog__footer .el-button {
+  height: 36px;
+  padding: 0 24px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.business-config-dialog__footer {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.business-config-dialog__footer-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+html.dark-red .el-overlay-dialog {
+  background: var(--mask-color);
+  backdrop-filter: blur(8px);
+}
+
+html.dark-red .business-config-dialog {
+  position: relative;
+  border: 1px solid var(--border-color-light);
+  border-radius: 0;
+  background: var(--bg-color-page);
+  backdrop-filter: blur(10px);
+  box-shadow:
+    inset 0 0 0 2px var(--fill-color-lighter),
+    var(--shadow-outside);
+}
+
+html.dark-red .business-config-dialog::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  /* All four corners are the design file's own cut-outs, 1:1 with their
+     viewBoxes (100x51 each). The hand-built edge segments that used to sit in
+     ::before are gone — the cut-outs already carry those strokes, and the old
+     ones overlapped them. */
+  background-image:
+    url('/assets/dialog/corner-tl.svg'),
+    url('/assets/dialog/corner-tr.svg'),
+    url('/assets/dialog/corner-bl.svg'),
+    url('/assets/dialog/corner-br.svg');
+  background-position:
+    left top,
+    right top,
+    left bottom,
+    right bottom;
+  background-size:
+    100px 51px,
+    100px 51px,
+    100px 51px,
+    100px 51px;
+}
+
+html.dark-red .business-config-dialog .el-dialog__header {
+  border-bottom-color: var(--border-color-light);
+  background: color-mix(in srgb, var(--bg-color-overlay) 72%, transparent);
+}
+
+html.dark-red .business-config-dialog .el-dialog__headerbtn .el-dialog__close {
+  color: var(--text-color-secondary);
+  font-size: 26px;
+}
+
+html.dark-red .business-config-dialog .el-dialog__headerbtn:hover .el-dialog__close {
+  color: var(--color-primary-light-3);
+}
+
+html.dark-red .business-config-dialog__sidebar,
+html.dark-red .business-config-dialog .el-dialog__footer {
+  border-color: var(--border-color-light);
+  background: color-mix(in srgb, var(--bg-color-overlay) 42%, transparent);
+}
+
+html.dark-red .business-config-dialog__sidebar .el-menu {
+  --el-menu-item-height: 48px;
+  --el-menu-item-font-size: var(--el-font-size-extra-large);
+  background: transparent;
+}
+
+/* The extra .business-config-dialog / .el-menu layers are required to outrank
+   `html.dark-red .el-menu:not(.el-menu--horizontal):not(.el-menu--popup)
+   .el-menu-item.is-active` in menu.css — that rule is (0,6,1) and otherwise
+   repaints the background, leaving this SVG invisible. */
+html.dark-red .business-config-dialog .business-config-dialog__sidebar .el-menu .el-menu-item.is-active {
+  /* Design-file asset: it already carries the gradient body, the diagonal
+     hatching, the bright right edge and the 1px outline, so the CSS border and
+     the hand-built gradients are gone. */
+  border: 0;
+  background: url('/assets/dialog/menu-active.svg') center / 100% 100% no-repeat;
+  color: var(--el-color-white);
+  font-weight: 700;
+  text-shadow:
+    0 0 4px color-mix(in srgb, var(--color-danger) 65%, transparent),
+    0 0 10px color-mix(in srgb, var(--color-danger) 45%, transparent);
+}
+
+html.dark-red .business-config-dialog__content {
+  background: color-mix(in srgb, var(--bg-color-page) 84%, transparent);
+}
+
+html.dark-red .business-config-dialog__content .el-tabs__nav-wrap::after {
+  background: var(--border-color-light);
+}
+
+@media (max-width: 760px) {
+  html.dark-red .business-config-dialog {
+    --business-dialog-sidebar-width: 168px;
+  }
+
+  .business-config-dialog__layout {
+    min-height: min(520px, calc(100vh - 192px));
+  }
+
+  .business-config-dialog__content {
+    padding-inline: 14px;
+  }
+
+  .business-config-dialog__footer {
+    gap: 12px;
+  }
+}

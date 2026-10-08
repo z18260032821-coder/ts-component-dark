@@ -1,0 +1,84 @@
+.transfer-demo {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+html.dark-red .el-transfer {
+  --el-transfer-item-height: 36px;
+  display: flex;
+  align-items: stretch;
+  width: max-content;
+}
+
+html.dark-red .el-transfer-panel {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: none;
+}
+
+html.dark-red .el-transfer-panel__body {
+  flex: 1;
+  height: auto;
+}
+
+html.dark-red .el-transfer-panel__list {
+  height: auto;
+}
+
+html.dark-red .el-transfer-panel__item.el-checkbox {
+  height: var(--el-transfer-item-height);
+  padding-block: 0;
+}
+
+html.dark-red .el-transfer-panel__item.el-checkbox .el-checkbox__label {
+  width: 100%;
+  padding-left: 26px;
+  font-size: 20px;
+  color: var(--el-text-color-regular);
+  line-height: var(--el-transfer-item-height);
+}
+
+html.dark-red .el-transfer-panel__item.el-checkbox .el-checkbox__input {
+  position: absolute;
+  top: 8px;
+}
+
+html.dark-red .transfer-demo .el-transfer-panel__list.el-checkbox-group .el-checkbox .el-checkbox__input.is-checked::before {
+  opacity: 1;
+}
+
+html.dark-red .el-transfer__buttons {
+  align-self: center;
+}
+
+html.dark-red .el-transfer-panel {
+  border-color: var(--border-color-light);
+  border-radius: 0;
+  background: var(--bg-color-overlay);
+}
+
+html.dark-red .el-transfer-panel__header {
+  border-bottom-color: var(--border-color-extra-light);
+  background: color-mix(in srgb, var(--color-primary-light-9) 72%, transparent);
+}
+
+html.dark-red .el-transfer-panel__header .el-checkbox__label {
+  color: var(--text-color-primary);
+}
+
+html.dark-red .el-transfer-panel__item:hover {
+  background: color-mix(in srgb, var(--color-primary-light-7) 72%, transparent);
+}
+
+html.dark-red .el-transfer-panel__item:has(.el-checkbox__input.is-checked) {
+  background: color-mix(in srgb, var(--color-primary-light-7) 82%, transparent);
+}
+
+html.dark-red .el-transfer-panel__empty {
+  color: var(--text-color-secondary);
+}
+
+html.dark-red .el-transfer__buttons .el-button {
+  min-width: 36px;
+}

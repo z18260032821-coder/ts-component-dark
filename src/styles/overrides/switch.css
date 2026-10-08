@@ -1,0 +1,60 @@
+html.dark-red .el-switch {
+  --el-switch-off-color: var(--border-color-light);
+  --el-switch-on-color: var(--color-primary-light-3);
+  --el-switch-core-border-radius: 0;
+  --el-switch-height: 28px;
+  --el-switch-width: 52px;
+  --el-switch-button-size: 18px;
+  --el-switch-button-color: var(--el-color-white);
+  --el-switch-off-bg-color: var(--fill-color-dark);
+  --el-switch-on-bg-color: color-mix(in srgb, var(--color-primary) 30%, transparent);
+  --el-switch-disabled-bg-color: var(--fill-color-dark);
+  --el-switch-disabled-button-color: var(--el-color-white);
+  --el-switch-disabled-text-color: var(--text-color-disabled);
+}
+
+html.dark-red .el-switch__core {
+  border: 1px solid var(--border-color-light);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--color-primary-light-3) 20%, transparent);
+}
+
+html.dark-red .el-switch.is-checked .el-switch__core {
+  border-color: var(--color-primary-light-3);
+  background-image: linear-gradient(90deg, var(--color-primary) 0%, var(--color-danger) 100%);
+  box-shadow:
+    inset 0 0 0 1px color-mix(in srgb, var(--color-primary-light-3) 25%, transparent),
+    0 0 10px color-mix(in srgb, var(--color-primary-light-3) 15%, transparent);
+}
+
+html.dark-red .el-switch__action {
+  position: relative;
+}
+
+html.dark-red .el-switch__action::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 0;
+  background:
+    linear-gradient(var(--el-color-white), var(--el-color-white)) left top / 2px 2px no-repeat,
+    linear-gradient(var(--el-color-white), var(--el-color-white)) right top / 2px 2px no-repeat,
+    linear-gradient(var(--el-color-white), var(--el-color-white)) left bottom / 2px 2px no-repeat,
+    linear-gradient(var(--el-color-white), var(--el-color-white)) right bottom / 2px 2px no-repeat;
+  pointer-events: none;
+}
+
+html.dark-red .el-switch__core .el-switch__button {
+  border: 1px solid var(--border-color-light);
+  background: var(--el-color-white);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-primary-light-3) 12%, transparent);
+}
+
+html.dark-red .el-switch.is-checked .el-switch__core .el-switch__button {
+  border-color: var(--color-primary-light-3);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-primary-light-3) 18%, transparent);
+}
+
+html.dark-red .el-switch.is-disabled .el-switch__core {
+  opacity: 0.7;
+  filter: grayscale(0.2);
+}
