@@ -1,104 +1,157 @@
+/*
+ * Message · Dark Red
+ *
+ * Geometry, colour and decoration are taken from the design file's Message
+ * component (file 6GfWsjRA1mikSzjHcSugwx, node 18:50): the Custom1 extension
+ * tokens Message/Surface|Border|Glow|Color plus the two circuit cut-outs.
+ *
+ * Two conventions to keep in mind when comparing against Figma:
+ *   - Figma measures padding from the frame edge, CSS from inside the 2px
+ *     border, so every padding below is 2px smaller than the Figma number.
+ *   - The circuit art ships as the design file's own SVGs, left and mirrored
+ *     right, instead of a mask. A mask only keeps the alpha channel and would
+ *     repaint the white 60% corner marks in the circuit colour.
+ *
+ * Element Plus already puts an 8px gap between the icon and the content — the
+ * design file's own spacing — so the icon carries no margin.
+ */
+
 html.dark-red .el-message {
-  --el-message-text-color: var(--color-success-dark-2);
-  --el-message-bg-color: var(--color-success-light-8);
-  --el-message-border-color: var(--color-success-light-9);
-  width: min(520px, calc(100vw - 32px));
+  --el-message-text-color: #85ce61;   /* Message/Color/Success; EP default would be #67c23a */
+  --el-message-bg-color: #25371c;     /* Message/Surface/Success */
+  --el-message-border-color: #1c2518; /* Message/Border/Success (also --color-success-light-9) */
+  width: min(520px, calc(100vw - 32px)); /* Figma fixes 520; the cap covers narrow viewports */
   min-height: 56px;
-  padding: 0 48px;
+  padding: 0 26px;                    /* 0 28px in Figma */
   overflow: hidden;
   border: 2px solid var(--el-message-border-color);
   border-radius: 0;
   background: var(--el-message-bg-color);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-success) 8%, transparent);
+  box-shadow: 0 0 8px #67c23a14;      /* Message/Glow/Success */
 }
 
+/* Danger is Element Plus' warning type. The design file binds the content to
+   Message/Circuit/Danger rather than to Message/Color/Danger. */
 html.dark-red .el-message--warning {
-  --el-message-text-color: var(--color-warning-dark-2);
-  --el-message-bg-color: var(--color-warning-light-8);
-  --el-message-border-color: var(--color-warning-light-9);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-warning) 8%, transparent);
+  --el-message-text-color: #d49010;
+  --el-message-bg-color: #372408;     /* Message/Surface/Danger */
+  --el-message-border-color: #2b2214; /* Message/Border/Danger */
+  padding: 0 46px 0 26px;             /* 0 48px 0 28px in Figma */
+  box-shadow: 0 0 8px #faa01814;      /* Message/Glow/Danger */
 }
 
-html.dark-red .el-message--error {
-  --el-message-text-color: var(--color-error-dark-2);
-  --el-message-bg-color: var(--color-error-light-8);
-  --el-message-border-color: var(--color-error-light-9);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-error) 8%, transparent);
+/* Error and Important share one skin in the design file — surfaces, borders,
+   glow and circuit cut-outs are identical; only the badge differs. */
+html.dark-red .el-message--error,
+html.dark-red .el-message--important {
+  --el-message-text-color: #ed0101;   /* Message/Color/Error */
+  --el-message-bg-color: #3a1010;     /* Message/Surface/Error */
+  --el-message-border-color: #2a1212; /* Message/Border/Error */
+  box-shadow: 0 0 8px #ed010114;      /* Message/Glow/Error */
 }
 
+/* The design file has no info variant; this keeps the company token palette. */
 html.dark-red .el-message--info {
   --el-message-text-color: var(--color-info-dark-2);
   --el-message-bg-color: var(--color-info-light-8);
   --el-message-border-color: var(--color-info-light-9);
-  box-shadow: 0 0 20px color-mix(in srgb, var(--color-info) 8%, transparent);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--color-info) 8%, transparent);
 }
 
-html.dark-red .el-message::before,
-html.dark-red .el-message::after {
+/* Circuit cut-outs. The -2px inset puts this layer on the border box, so the
+   positions below are the design file's own frame coordinates. */
+html.dark-red .el-message::before {
   position: absolute;
-  inset: 0;
+  inset: -2px;
+  z-index: 1;
   content: '';
   pointer-events: none;
-}
-
-html.dark-red .el-message::before {
-  background: var(--color-success-light-3);
-  -webkit-mask-image: url('/assets/message/circuit-left.svg'), url('/assets/message/circuit-right.svg');
-  -webkit-mask-position: left -2px top -2px, right 2px top -2px;
-  -webkit-mask-repeat: no-repeat;
-  -webkit-mask-size: 80px 54px;
-  mask-image: url('/assets/message/circuit-left.svg'), url('/assets/message/circuit-right.svg');
-  mask-position: left -2px top -2px, right 2px top -2px;
-  mask-repeat: no-repeat;
-  mask-size: 80px 54px;
+  background-repeat: no-repeat;
+  background-image:
+    url('/assets/message/circuit-success-left.svg'),
+    url('/assets/message/circuit-success-right.svg');
+  background-position:
+    left 1px top 0,
+    right 0 top 0;
+  background-size:
+    80px 54px,
+    80px 54px;
 }
 
 html.dark-red .el-message--warning::before {
-  background: var(--color-warning-light-3);
+  background-image:
+    url('/assets/message/circuit-danger-left.svg'),
+    url('/assets/message/circuit-danger-right.svg');
+  background-position:
+    left 0 top 0,
+    right 0 top 0;
 }
 
-html.dark-red .el-message--error::before {
-  background: var(--color-error-light-3);
+html.dark-red .el-message--error::before,
+html.dark-red .el-message--important::before {
+  background-image:
+    url('/assets/message/circuit-error-left.svg'),
+    url('/assets/message/circuit-error-right.svg');
+  background-position:
+    left 0 top 4px,
+    right 0 top 4px;
+  background-size:
+    44px 48px,
+    44px 48px;
 }
 
-html.dark-red .el-message--info::before {
-  background: var(--color-info-light-3);
-}
-
-html.dark-red .el-message::after {
-  background:
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) left 4px top 4px / 12px 2px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) left 4px top 4px / 2px 12px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) right 4px top 4px / 12px 2px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) right 4px top 4px / 2px 12px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) left 4px bottom 4px / 12px 2px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) left 4px bottom 4px / 2px 12px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) right 4px bottom 4px / 12px 2px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) right 4px bottom 4px / 2px 12px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) left 48px top 10px / 4px 4px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) left 48px bottom 10px / 4px 4px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) right 48px top 10px / 4px 4px no-repeat,
-    linear-gradient(var(--text-color-primary), var(--text-color-primary)) right 48px bottom 10px / 4px 4px no-repeat;
-}
-
+/* Status badge. The design file draws the mark as a knockout in the variant's
+   own surface colour, so the badge ships as opaque art and Element Plus' font
+   glyph is hidden behind it. */
 html.dark-red .el-message .el-message__icon {
   z-index: 2;
-  width: 24px;
+  width: 24px;                        /* Message/Icon/Size */
   height: 24px;
-  margin-right: 12px;
-  color: var(--el-message-text-color);
-  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--el-message-text-color) 58%, transparent));
+  background: url('/assets/message/icon-success.svg') center / 24px 24px no-repeat;
+}
+
+html.dark-red .el-message .el-message__icon svg {
+  display: none;
+}
+
+html.dark-red .el-message--warning .el-message__icon {
+  background-image: url('/assets/message/icon-danger.svg');
+}
+
+html.dark-red .el-message--error .el-message__icon {
+  background-image: url('/assets/message/icon-error.svg');
+}
+
+/* Important's badge is a 28px triangle. The export is the mark's own ink box
+   (25x24) rather than the 28px frame, so it is placed 2px/3px in: the triangle
+   sits at (2,5) in the frame and at (0,2) in the file. */
+html.dark-red .el-message--important .el-message__icon {
+  width: 28px;
+  height: 28px;
+  background-image: url('/assets/message/icon-important.svg');
+  background-position: left 2px top 3px;
+  background-size: 25px 24px;
 }
 
 html.dark-red .el-message .el-message__content {
   z-index: 2;
   color: var(--el-message-text-color);
-  font-size: 18px;
-  line-height: 1.4;
-  text-shadow:
-    0 0 2px color-mix(in srgb, var(--el-message-text-color) 90%, transparent),
-    0 0 6px color-mix(in srgb, var(--el-message-text-color) 58%, transparent),
-    0 0 12px color-mix(in srgb, var(--el-message-text-color) 30%, transparent);
+  font-size: 20px;
+  line-height: 24px;
+  text-shadow: 0 3px 3px #46b74666;   /* the component hard-codes #46b746 at 40% */
+}
+
+html.dark-red .el-message--warning .el-message__content {
+  text-shadow: 0 3px 3px #a77730;
+}
+
+html.dark-red .el-message--error .el-message__content,
+html.dark-red .el-message--important .el-message__content {
+  text-shadow: 0 3px 3px #ed0101e5;   /* Message/Text Glow/Error/Core */
+}
+
+html.dark-red .el-message--info .el-message__content {
+  text-shadow: 0 3px 3px color-mix(in srgb, var(--color-info-dark-2) 90%, transparent);
 }
 
 html.dark-red .el-message .el-message__closeBtn,

@@ -862,6 +862,7 @@ const showDanger = () => ElMessage.warning('提示请注意，可能有危险哦
 const showError = () => ElMessage.error('错误操作，请重新输入！')
 const showImportant = () => ElMessage({
   type: 'error',
+  customClass: 'el-message--important',
   message: '重要提示，请谨慎对待！！！',
 })
 
