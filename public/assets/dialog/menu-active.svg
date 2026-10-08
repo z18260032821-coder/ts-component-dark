@@ -1,4 +1,8 @@
-<svg width="220" height="48" viewBox="0 0 220 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<!-- preserveAspectRatio="none": the art is painted with background-size 100% 100%
+     on rows of any width. Without it the default xMidYMid meet fits the 220x48 art
+     by height and centres it, leaving a gap on both sides of wider rows.
+     Re-exporting this asset from Figma drops the attribute; add it back. -->
+<svg width="220" height="48" viewBox="0 0 220 48" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_405_2758)">
 <rect width="220" height="48" fill="url(#paint0_linear_405_2758)"/>
 <path d="M220 2.99339V6.26575L209 1.13905L209 -2L220 2.99339Z" fill="#CA5A10"/>
