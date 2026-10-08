@@ -61,18 +61,18 @@ html.dark-red .el-tabs:not(.el-tabs--card, .el-tabs--border-card) .el-tabs__acti
   box-shadow: 0 -2px 20px 4px color-mix(in srgb, var(--color-danger) 58%, transparent);
 }
 
+/* Same bloom as the horizontal menu: two thirds of the indicator, centred on it. */
 html.dark-red .el-tabs:not(.el-tabs--card, .el-tabs--border-card) .el-tabs__active-bar::before {
   content: '';
   position: absolute;
-  left: 50%;
+  right: calc(100% / 6);
   bottom: -8px;
-  width: 45px;
+  left: calc(100% / 6);
   height: 22px;
   border-radius: 50%;
   background: color-mix(in srgb, var(--color-danger) 84%, transparent);
   filter: blur(7px);
   pointer-events: none;
-  transform: translateX(-50%);
 }
 
 html.dark-red .el-tabs .el-tabs__content {

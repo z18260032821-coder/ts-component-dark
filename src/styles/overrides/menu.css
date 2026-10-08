@@ -3,13 +3,14 @@
   overflow-x: auto;
 }
 
-/* An `auto` overflow on one axis forces the other axis out of `visible`, so the
-   horizontal demo became a scroll container 8px shorter than its content: the
-   active item's bloom is drawn 8px below the item on purpose, which produced a
-   stray vertical scrollbar and clipped the bloom. Reserve that 8px instead. */
+/* The active item's bloom hangs 8px below its bar and is meant to be cut off at
+   the frame edge, exactly as Element Plus cuts it inside `.el-tabs__nav-wrap`
+   (which carries `overflow: hidden` of its own). The horizontal menu has no such
+   wrapper, and `overflow-x: auto` on this demo host turns the other axis into a
+   scroll container as well, which added a stray vertical scrollbar. Keep the cut,
+   drop the scrollbar. */
 .menu-demo--horizontal {
   overflow-y: hidden;
-  padding-bottom: 8px;
 }
 
 .menu-demo--horizontal .el-menu {
@@ -57,12 +58,14 @@ html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-acti
   font-weight: 700;
 }
 
+/* bottom: 0 puts the bar on the menu's own 1px rule, so the active label shows a
+   single line, the way the Tabs indicator covers the tab bar. */
 html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item.is-active::after,
 html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-active > .el-sub-menu__title::after {
   content: '';
   position: absolute;
   right: 18px;
-  bottom: 1px;
+  bottom: 0;
   left: 18px;
   height: 2px;
   background: linear-gradient(
@@ -72,23 +75,26 @@ html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-acti
     var(--color-primary) 68%,
     transparent 100%
   );
-  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--color-danger) 52%, transparent));
+  /* Same halo as the Tabs indicator, so both labels read identically. */
+  box-shadow: 0 -2px 20px 4px color-mix(in srgb, var(--color-danger) 58%, transparent);
   pointer-events: none;
 }
 
+/* The bloom is two thirds of the indicator, centred on it: the bar spans
+   `100% - 36px`, so an inset of a sixth of that width leaves a third less. Only
+   the bloom's upper half survives the frame cut. */
 html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item.is-active::before,
 html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-sub-menu.is-active > .el-sub-menu__title::before {
   content: '';
   position: absolute;
-  left: 50%;
+  right: calc(18px + (100% - 36px) / 6);
   bottom: -8px;
-  width: 45px;
+  left: calc(18px + (100% - 36px) / 6);
   height: 22px;
   border-radius: 50%;
   background: color-mix(in srgb, var(--color-danger) 84%, transparent);
   filter: blur(7px);
   pointer-events: none;
-  transform: translateX(-50%);
 }
 
 html.dark-red .menu-demo--horizontal .el-menu--horizontal > .el-menu-item:focus-visible,
